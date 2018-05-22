@@ -66,29 +66,8 @@
                         <th rowspan="1" colspan="1" class="text-center">Delete</th>
                     </tr>
                     </tfoot>
-                    <tbody>
-                    <tr role="row" class="odd">
-                        <td class="sorting_1">Airi Satou</td>
-                        <td>Accountant</td>
-                        <td>$162,700</td>
-                        <td>
-                            <button class="btn btn-link waves-effect"><i class="material-icons">mode_edit</i></button>
-                        </td>
-                        <td>
-                            <button class="btn btn-link waves-effect"><i class="material-icons">delete</i></button>
-                        </td>
-                    </tr>
-                    <tr role="row" class="even">
-                        <td class="sorting_1">Angelica Ramos</td>
-                        <td>Chief Executive Officer (CEO)</td>
-                        <td>$1,200,000</td>
-                        <td>
-                            <button class="btn btn-link waves-effect"><i class="material-icons">mode_edit</i></button>
-                        </td>
-                        <td>
-                            <button class="btn btn-link waves-effect"><i class="material-icons">delete</i></button>
-                        </td>
-                    </tr>
+                    <tbody id="list-student-tbody">
+
                     </tbody>
                 </table>
                 <div class="row">

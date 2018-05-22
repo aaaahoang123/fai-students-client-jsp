@@ -27,6 +27,9 @@ public class StudentServlet extends Viewer {
                 responseView(req, resp, "Add Student Form", "/pages/students/form.jsp", extraJS, extraCss);
                 break;
             case "/list-table":
+                extraJS.add("plugins/bootstrap-notify/bootstrap-notify.js");
+                extraJS.add("js/pages/students/list-table.js");
+
                 responseView(req, resp, "List Student Table", "/pages/students/list-table.jsp", extraJS, extraCss);
                 break;
             default:
