@@ -9,8 +9,9 @@
 <div class="container-fluid">
     <div class="card">
         <div class="header bg-red">
+            <i class="material-icons md-36" style="float: left; margin-left: 1%; margin-right: 1%">person_add</i>
             <h2>
-                Add Student Form <small>Define full information.</small>
+                Thêm mới sinh viên <small>Hãy điền đầy đủ thông tin!</small>
             </h2>
         </div>
         <div class="body">
@@ -19,7 +20,7 @@
                     <form action="/" id="frm-file-upload" class="dropzone" enctype="multipart/form-data">
                         <div class="dz-message">
                             <div class="drag-icon-cph">
-                                <i class="material-icons">touch_app</i>
+                                <i class="material-icons">add_a_photo</i>
                             </div>
                             <h3>Kéo tệp hoặc kích vào đây để tải ảnh lên</h3>
                             <em>(Ảnh được tải lên sẽ là ảnh đại diện của sinh viên.)</em>
@@ -94,8 +95,8 @@
                             </span>
                                     <select class="form-control show-tick" name="gender">
                                         <option value="">-- Giới tính --</option>
-                                        <option value="0">Female</option>
-                                        <option value="1">Male</option>
+                                        <option value="0">Nữ</option>
+                                        <option value="1">Nam</option>
                                     </select>
                                 </div>
                             </div>
@@ -122,8 +123,8 @@
                         </div>
 
                         <input type="text" name="avatar" style="display: none">
-                        <button class="btn btn-primary waves-effect" type="button">SAVE</button>
-                        <button class="btn bg-red waves-effect" type="reset">RESET</button>
+                        <button class="btn btn-primary waves-effect" type="button">Lưu</button>
+                        <button class="btn bg-red waves-effect" type="reset">Reset</button>
                     </form>
                 </div>
             </div>
