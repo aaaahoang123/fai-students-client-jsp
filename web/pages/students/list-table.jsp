@@ -70,46 +70,6 @@
                         <td>Chief Executive Officer (CEO)</td>
                         <td>$1,200,000</td>
                     </tr>
-                    <tr role="row" class="odd">
-                        <td class="sorting_1">Ashton Cox</td>
-                        <td>Junior Technical Author</td>
-                        <td>$86,000</td>
-                    </tr>
-                    <tr role="row" class="even">
-                        <td class="sorting_1">Bradley Greer</td>
-                        <td>Software Engineer</td>
-                        <td>$132,000</td>
-                    </tr>
-                    <tr role="row" class="odd">
-                        <td class="sorting_1">Brenden Wagner</td>
-                        <td>Software Engineer</td>
-                        <td>$206,850</td>
-                    </tr>
-                    <tr role="row" class="even">
-                        <td class="sorting_1">Brielle Williamson</td>
-                        <td>Integration Specialist</td>
-                        <td>$372,000</td>
-                    </tr>
-                    <tr role="row" class="odd">
-                        <td class="sorting_1">Bruno Nash</td>
-                        <td>Software Engineer</td>
-                        <td>$163,500</td>
-                    </tr>
-                    <tr role="row" class="even">
-                        <td class="sorting_1">Caesar Vance</td>
-                        <td>Pre-Sales Support</td>
-                        <td>$106,450</td>
-                    </tr>
-                    <tr role="row" class="odd">
-                        <td class="sorting_1">Cara Stevens</td>
-                        <td>Sales Assistant</td>
-                        <td>$145,600</td>
-                    </tr>
-                    <tr role="row" class="even">
-                        <td class="sorting_1">Cedric Kelly</td>
-                        <td>Senior Javascript Developer</td>
-                        <td>$433,060</td>
-                    </tr>
                     </tbody>
                 </table>
                 <div class="row">
