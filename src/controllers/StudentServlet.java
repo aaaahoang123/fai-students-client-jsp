@@ -16,6 +16,7 @@ public class StudentServlet extends Viewer {
         List<String> extraJS = new ArrayList<>();
         switch (req.getPathInfo()) {
             case "/form":
+                extraJS.add("js/utility/validator.js");
                 responseView(req, resp, "Add Student Form", "/pages/students/form.jsp", extraJS, extraCss);
                 break;
             case "/list-table":
