@@ -36,27 +36,34 @@
                 </div>
 
 
-                <table class="table table-bordered table-striped table-hover dataTable js-exportable m-t-20"
+                <table class="table table-bordered table-striped table-hover dataTable js-exportable m-t-20 text-center"
                        id="DataTables_Table_1" role="grid" aria-describedby="DataTables_Table_1_info">
                     <thead>
                     <tr role="row">
-                        <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1"
-                            aria-sort="ascending" aria-label="Name: activate to sort column descending"
-                            style="width: 119px;">Roll Number
+                        <th class="sorting_asc text-center" tabindex="0" aria-controls="DataTables_Table_1" aria-label="Roll number of Student">
+                            Roll Number
                         </th>
-                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1"
-                            aria-label="Position: activate to sort column ascending" style="width: 201px;">Full Name
+                        <th class="sorting text-center" tabindex="0" aria-controls="DataTables_Table_1" aria-label="Full name of Student">
+                            Full Name
                         </th>
-                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1"
-                            aria-label="Salary: activate to sort column ascending" style="width: 64px;">Phone
+                        <th class="sorting text-center" tabindex="0" aria-controls="DataTables_Table_1" aria-label="Phone number of Student">
+                            Phone
+                        </th>
+                        <th class="sorting text-center" tabindex="0" aria-controls="DataTables_Table_1" aria-label="Action with Students">
+                            Edit
+                        </th>
+                        <th class="sorting text-center" tabindex="0" aria-controls="DataTables_Table_1" aria-label="Action with Students">
+                            Delete
                         </th>
                     </tr>
                     </thead>
                     <tfoot>
                     <tr>
-                        <th rowspan="1" colspan="1">Roll Number</th>
-                        <th rowspan="1" colspan="1">Full Name</th>
-                        <th rowspan="1" colspan="1">Phone</th>
+                        <th rowspan="1" colspan="1" class="text-center">Roll Number</th>
+                        <th rowspan="1" colspan="1" class="text-center">Full Name</th>
+                        <th rowspan="1" colspan="1" class="text-center">Phone</th>
+                        <th rowspan="1" colspan="1" class="text-center">Edit</th>
+                        <th rowspan="1" colspan="1" class="text-center">Delete</th>
                     </tr>
                     </tfoot>
                     <tbody>
@@ -64,11 +71,23 @@
                         <td class="sorting_1">Airi Satou</td>
                         <td>Accountant</td>
                         <td>$162,700</td>
+                        <td>
+                            <button class="btn btn-link waves-effect"><i class="material-icons">mode_edit</i></button>
+                        </td>
+                        <td>
+                            <button class="btn btn-link waves-effect"><i class="material-icons">delete</i></button>
+                        </td>
                     </tr>
                     <tr role="row" class="even">
                         <td class="sorting_1">Angelica Ramos</td>
                         <td>Chief Executive Officer (CEO)</td>
                         <td>$1,200,000</td>
+                        <td>
+                            <button class="btn btn-link waves-effect"><i class="material-icons">mode_edit</i></button>
+                        </td>
+                        <td>
+                            <button class="btn btn-link waves-effect"><i class="material-icons">delete</i></button>
+                        </td>
                     </tr>
                     </tbody>
                 </table>
@@ -112,9 +131,7 @@
                             </ul>
                         </div>
                     </div>
-
                 </div>
-
             </div>
         </div>
     </div>
