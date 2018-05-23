@@ -1,7 +1,11 @@
-
+var STUDENTS_API = 'https://students-api-fai.appspot.com/api/students';
+var query = location.search;
+var hasPage = (query !== "" && query.includes('page'));
+var hasLimit = (query !== "" && query.includes('limit'));
 function loadStudent() {
     var request = new XMLHttpRequest();
-    request.open('GET', 'https://students-api-fai.appspot.com/api/students');
+    console.log(STUDENTS_API + query);
+    request.open('GET', STUDENTS_API + query);
     request.onload = function () {
         var data = JSON.parse(this.response).data;
         var meta = JSON.parse(this.response).meta;
@@ -10,6 +14,8 @@ function loadStudent() {
             bindStudentToTable(data[i]);
         }
         genPagination(meta);
+        document.getElementById("list-student-card").style.display = "";
+        document.getElementById("list-student-card").className += " animated fadeIn";
     };
     request.onerror = function () {
         var data = JSON.parse(this.response);
@@ -21,17 +27,6 @@ function loadStudent() {
 loadStudent();
 
 function bindStudentToTable(student) {
-    // <tr role="row" class="even">
-    //     <td class="sorting_1">Angelica Ramos</td>
-    //     <td>Chief Executive Officer (CEO)</td>
-    //     <td>$1,200,000</td>
-    //     <td>
-    //              <button class="btn btn-link waves-effect"><i class="material-icons">mode_edit</i></button>
-    //     </td>
-    //     <td>
-    //              <button class="btn btn-link waves-effect"><i class="material-icons">delete</i></button>
-    //     </td>
-//     </tr>
     var row = document.createElement('tr');
     row.className = 'even';
 
@@ -71,6 +66,68 @@ function bindStudentToTable(student) {
 }
 
 function genPagination(meta) {
+    console.log(meta);
+    var pagi = document.getElementById("my-pagination");
+    /**
+     * Nếu số trang hiện tại là 1 thì ko cho prev
+     */
+    if (meta.page === 1) pagi.querySelector("li.paginate_button.previous").className += " disabled";
+    else pagi.querySelector("li.paginate_button.previous > a").href = "/students/list-table" + location.search.replace("page=" + meta.page, "page=" + (meta.page - 1));
 
+    /**
+     * Nếu số trang hiện tại bằng tổng số trang thì ko cho next
+     */
+    if (meta.page === meta.totalPage) pagi.querySelector("li.paginate_button.next").className += " disabled";
+    else {
+        if (hasPage) pagi.querySelector("li.paginate_button.next > a").href = "/students/list-table" + location.search.replace('page=' + meta.page, 'page=' + (meta.page + 1));
+        if (!hasPage && !hasLimit) pagi.querySelector("li.paginate_button.next > a").href = "/students/list-table?page=" + (meta.page + 1);
+        if (!hasPage && hasLimit) pagi.querySelector("li.paginate_button.next > a").href = "/students/list-table" + location.search + "&page=" + (meta.page + 1);
+    }
 
+    /**
+     * Tạo pagination dựa vào meta
+     */
+    for (var i=1; i<=meta.totalPage; i++) {
+        pagi.insertBefore(pageNode(i, (meta.page === i), meta.page), pagi.querySelector("li.paginate_button.next"));
+    }
+}
+
+/**
+ *
+ * @param num
+ * @param active
+ * @returns {HTMLLIElement}
+ * Nhận vào số trang, tình trạng node có active hay không, và return lại node đó
+ */
+var pageNode = function (num, active, cur) {
+   var li = document.createElement("li");
+   li.className = "paginate_button";
+
+   var anchor = document.createElement("a");
+   anchor.innerHTML = num;
+   if (!hasPage && !hasLimit) anchor.href = "/students/list-table?page=" + num;
+   if (!hasPage && hasLimit) anchor.href =  "/students/list-table" + location.search + "&page=" + num;
+   if (hasPage) anchor.href = "/students/list-table" + location.search.replace('page=' + cur, "page=" + num);
+
+   if (active) {
+       li.className += " active";
+       anchor.href = "javascript.void(0)";
+   }
+
+   li.appendChild(anchor);
+
+   return li;
+};
+
+function deleteStudent(id) {
+    $.ajax({
+        url: STUDENTS_API + "/" + id,
+        method: "DELETE",
+        success: function (res) {
+          console.log(res);
+        },
+        error: function (res) {
+            console.log(res);
+        }
+    });
 }

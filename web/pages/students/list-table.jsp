@@ -5,7 +5,7 @@
   Time: 2:46 PM
   To change this template use File | Settings | File Templates.
 --%>
-<div class="card">
+<div class="card" style="display: none" id="list-student-card">
     <div class="header bg-red">
         <h2>
             LIST STUDENTS
@@ -79,33 +79,15 @@
                     <div class="col-sm-7">
                         <div class="dataTables_paginate paging_simple_numbers " id="DataTables_Table_1_paginate"
                              style="text-align: right;">
-                            <ul class="pagination ">
-                                <li class="paginate_button previous disabled" id="DataTables_Table_1_previous">
+                            <ul class="pagination" id="my-pagination">
+                                <li class="paginate_button previous">
                                     <a href="#" aria-controls="DataTables_Table_1" data-dt-idx="0"
                                        tabindex="0">Previous</a>
                                 </li>
-                                <li class="paginate_button active">
-                                    <a href="#" aria-controls="DataTables_Table_1" data-dt-idx="1" tabindex="0">1</a>
-                                </li>
-                                <li class="paginate_button ">
-                                    <a href="#" aria-controls="DataTables_Table_1" data-dt-idx="2" tabindex="0">2</a>
-                                </li>
-                                <li class="paginate_button ">
-                                    <a href="#" aria-controls="DataTables_Table_1" data-dt-idx="3" tabindex="0">3</a>
-                                </li>
-                                <li class="paginate_button "><a href="#" aria-controls="DataTables_Table_1"
-                                                                data-dt-idx="4" tabindex="0">4</a>
-                                </li>
-                                <li class="paginate_button "><a href="#" aria-controls="DataTables_Table_1"
-                                                                data-dt-idx="5" tabindex="0">5</a>
-                                </li>
-                                <li class="paginate_button "><a href="#" aria-controls="DataTables_Table_1"
-                                                                data-dt-idx="6" tabindex="0">6</a>
-                                </li>
-                                <li class="paginate_button next" id="DataTables_Table_1_next"><a href="#"
-                                                                                                 aria-controls="DataTables_Table_1"
-                                                                                                 data-dt-idx="7"
-                                                                                                 tabindex="0">Next</a>
+                                <li class="paginate_button next"><a href="#"
+                                     aria-controls="DataTables_Table_1"
+                                     data-dt-idx="7"
+                                     tabindex="0">Next</a>
                                 </li>
                             </ul>
                         </div>

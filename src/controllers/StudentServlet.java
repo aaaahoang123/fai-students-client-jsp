@@ -28,6 +28,9 @@ public class StudentServlet extends Viewer {
                 break;
             case "/list-table":
                 extraJS.add("plugins/bootstrap-notify/bootstrap-notify.js");
+                extraJS.add("plugins/sweetalert/sweetalert.min.js");
+                extraJS.add("js/pages/ui/dialogs.js");
+                extraJS.add("plugins/sweetalert/sweetalert.css");
                 extraJS.add("js/pages/students/list-table.js");
 
                 responseView(req, resp, "List Student Table", "/pages/students/list-table.jsp", extraJS, extraCss);
