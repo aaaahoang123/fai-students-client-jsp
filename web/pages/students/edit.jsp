@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
-  User: Admin
-  Date: 5/21/2018
-  Time: 2:46 PM
+  User: tienb
+  Date: 25/05/2018
+  Time: 5:11 SA
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -30,7 +30,7 @@
         <div class="header bg-red">
             <i class="material-icons md-36" style="float: left; margin-left: 1%; margin-right: 1%">person_add</i>
             <h2>
-                Thêm mới sinh viên
+                Cập nhật thông tin sinh viên
                 <small>Hãy điền đầy đủ thông tin!</small>
             </h2>
         </div>
