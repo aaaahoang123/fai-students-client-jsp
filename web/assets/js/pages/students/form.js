@@ -24,16 +24,17 @@ function initializePlugins(uploadImgUrl) {
      * Config and initialize the datepicker
      */
     $('.datepicker').bootstrapMaterialDatePicker({
-        format: 'dddd DD MMMM YYYY',
+        format: 'MM/DD/YYYY',
         clearButton: true,
         weekStart: 1,
         time: false
     });
 
+
     /**
      * Config and initial the input mask of email and phone
      */
-    $("form[name='student-form'] input[name='phone']").inputmask('+99 999 999 99 99', { placeholder: '+__ ___ ___ __ __' });
+    //$("form[name='student-form'] input[name='phone']").inputmask('9999 999 99 99','9999 999 999', { placeholder: '____ ___ __ __', placeholder:'____ ___ ___'});
     $("form[name='student-form'] input[name='email']").inputmask({ alias: "email" });
 
     /**
@@ -49,6 +50,7 @@ function initializePlugins(uploadImgUrl) {
         success: function (file, res) {
             document.getElementById("demo-avatar").src = res;
             document.getElementById("demo-avatar").style.display = "";
+            document.forms["student-form"]['avatar'].value = res;
             $("#frm-file-upload").hide();
         }
     });

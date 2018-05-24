@@ -35,7 +35,7 @@
                 <li <c:if test="${fn:contains(content, 'pages/students')}">class="active"</c:if>>
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">account_circle</i>
-                        <span>Sinh Viên</span>
+                        <span>Quản lý sinh viên</span>
                     </a>
                     <ul class="ml-menu">
                         <li <c:if test="${fn:contains(content, 'pages/students/form.jsp')}">class="active"</c:if>>
