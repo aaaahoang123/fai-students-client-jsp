@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <section>
@@ -9,8 +10,8 @@
                 <img src="${assets}images/user.png" width="48" height="48" alt="User" />
             </div>
             <div class="info-container">
-                <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">John Doe</div>
-                <div class="email">john.doe@example.com</div>
+                <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administrator</div>
+                <div class="email">admin@focusteamvn.org</div>
                 <div class="btn-group user-helper-dropdown">
                     <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                     <ul class="dropdown-menu pull-right">
@@ -29,19 +30,19 @@
         <!-- Menu -->
         <div class="menu">
             <ul class="list">
-                <li class="header">MAIN NAVIGATION</li>
+                <li class="header">Danh Mục</li>
                 <%--<li <c:if test="${path eq '/'}" >class="active"</c:if>>--%>
                 <li <c:if test="${fn:contains(content, 'pages/students')}">class="active"</c:if>>
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">account_circle</i>
-                        <span>Student</span>
+                        <span>Quản lý sinh viên</span>
                     </a>
                     <ul class="ml-menu">
                         <li <c:if test="${fn:contains(content, 'pages/students/form.jsp')}">class="active"</c:if>>
-                            <a href="/students/form">Add Student</a>
+                            <a href="/students/form">Thêm Mới</a>
                         </li>
                         <li <c:if test="${fn:contains(content, 'pages/students/list-table.jsp')}">class="active"</c:if>>
-                            <a href="/students/list-table">List Student</a>
+                            <a href="/students/list-table">Danh Sách</a>
                         </li>
                     </ul>
                 </li>
@@ -51,10 +52,10 @@
         <!-- Footer -->
         <div class="legal">
             <div class="copyright">
-                &copy; 2016 - 2017 <a href="javascript:void(0);">AdminBSB - Material Design</a>.
+                &copy; 2017 - 2018 <a href="javascript:void(0);">Student Manager - FocusTeam</a>.
             </div>
             <div class="version">
-                <b>Version: </b> 1.0.5
+                <b>Version: </b> 1.0.3
             </div>
         </div>
         <!-- #Footer -->
