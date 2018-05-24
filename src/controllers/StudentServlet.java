@@ -1,7 +1,6 @@
 package controllers;
 
 import utility.Viewer;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,7 +30,10 @@ public class StudentServlet extends Viewer {
                 break;
             case "/list-table":
                 extraJS.add("plugins/bootstrap-notify/bootstrap-notify.js");
+                extraJS.add("plugins/sweetalert/sweetalert.min.js");
+                extraCss.add("plugins/sweetalert/sweetalert.css");
                 extraJS.add("js/pages/students/list-table.js");
+                extraCss.add("plugins/font-awesome/css/font-awesome.css");
 
                 responseView(req, resp, "List Student Table", "/pages/students/list-table.jsp", extraJS, extraCss);
                 break;
