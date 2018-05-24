@@ -34,7 +34,6 @@ function bindStudentToTable(student) {
 //     </tr>
     var row = document.createElement('tr');
     row.className = 'even';
-
     var rollCol = document.createElement('td');
     rollCol.className = 'sorting_1';
     rollCol.innerHTML = student.attributes.rollNumber;
@@ -69,8 +68,23 @@ function bindStudentToTable(student) {
 
     document.getElementById('list-student-tbody').appendChild(row);
 }
-
+// <li class="paginate_button previous disabled" id="DataTables_Table_1_previous">
+//     <a href="#" aria-controls="DataTables_Table_1" data-dt-idx="0"
+// tabindex="0">Previous</a>
+//     </li>
+//     <li class="paginate_button active">
+//     <a href="#" aria-controls="DataTables_Table_1" data-dt-idx="1" tabindex="0">1</a>
+//     </li>
+//     <li class="paginate_button ">
+//     <a href="#" aria-controls="DataTables_Table_1" data-dt-idx="2" tabindex="0">2</a>
+//     </li>
+//     <li class="paginate_button next" id="DataTables_Table_1_next"><a href="#"
+// aria-controls="DataTables_Table_1"
+// data-dt-idx="7"
+// tabindex="0">Next</a>
+//     </li>
 function genPagination(meta) {
-
+var li = document.createElement('li');
+li.className = 'paginate_button previous disabled';
 
 }
