@@ -48,6 +48,15 @@
 <c:import url="pages/layouts/sidebar.jsp" />
 
 <section class="content">
+  <div class="five-zero-zero animated fadeIn" id="error-500-section" style="display: none">
+    <div class="five-zero-zero-container">
+      <div class="error-code">500</div>
+      <div class="error-message">Server error</div>
+      <div class="button-place">
+        <a href="/" class="btn btn-default btn-lg waves-effect">GO TO HOMEPAGE</a>
+      </div>
+    </div>
+  </div>
   <c:import url="${content}" />
 </section>
 

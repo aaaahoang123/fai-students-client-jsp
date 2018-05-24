@@ -6,20 +6,21 @@ function loadStudent() {
     var request = new XMLHttpRequest();
     console.log(STUDENTS_API + query);
     request.open('GET', STUDENTS_API + query);
-    request.onload = function () {
-        var data = JSON.parse(this.response).data;
-        var meta = JSON.parse(this.response).meta;
-        document.getElementById('list-student-tbody').innerHTML = '';
-        for (var i = 0; i < data.length; i++) {
-            bindStudentToTable(data[i]);
+    request.onloadend = function () {
+        if (this.status === 200) {
+            var data = JSON.parse(this.response).data;
+            var meta = JSON.parse(this.response).meta;
+            document.getElementById('list-student-tbody').innerHTML = '';
+            for (var i = 0; i < data.length; i++) {
+                bindStudentToTable(data[i]);
+            }
+            genPagination(meta);
+            document.getElementById("list-student-card").style.display = "";
+            document.getElementById("list-student-card").className += " animated fadeIn";
+        } else {
+            console.log(this);
+            document.getElementById('error-500-section').style.display = "";
         }
-        genPagination(meta);
-        document.getElementById("list-student-card").style.display = "";
-        document.getElementById("list-student-card").className += " animated fadeIn";
-    };
-    request.onerror = function () {
-        var data = JSON.parse(this.response);
-        console.log(data);
     };
     request.send();
 }
