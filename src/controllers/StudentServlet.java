@@ -16,6 +16,8 @@ public class StudentServlet extends Viewer {
         List<String> extraJS = new ArrayList<>();
         switch (req.getPathInfo()) {
             case "/form":
+                extraJS.add("js/pages/students/validator.js");
+                extraJS.add("js/pages/students/xregexp-all.js");
                 extraCss.add("plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css");
                 extraCss.add("plugins/bootstrap-select/css/bootstrap-select.css");
                 extraCss.add("plugins/dropzone/dropzone.css");
@@ -24,6 +26,7 @@ public class StudentServlet extends Viewer {
                 extraJS.add("plugins/dropzone/dropzone.js");
                 extraJS.add("plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js");
                 extraJS.add("js/pages/students/form.js");
+                extraJS.add("plugins/bootstrap-notify/bootstrap-notify.js");
                 responseView(req, resp, "Add Student Form", "/pages/students/form.jsp", extraJS, extraCss);
                 break;
             case "/list-table":
