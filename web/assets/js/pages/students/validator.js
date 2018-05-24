@@ -1,9 +1,6 @@
 
 var validateRollNumber = function (elm) {
-    if(document.getElementById("alert-error").className !== ""){
-        document.getElementById("alert-error").className = "";
-        document.getElementById("alert-error").innerHTML = "";
-    }
+
     var alert = elm.parentElement.parentElement.querySelector("label");
     var rollNumber = elm.value;
     if (checkNull(rollNumber)) {
@@ -19,9 +16,10 @@ var validateRollNumber = function (elm) {
         removeAlert(alert, elm);
         return true;
     }
-}
+};
 
 var validateFullName = function (elm) {
+
     var alert = elm.parentElement.parentElement.querySelector("label");
     var fullName = elm.value;
     if (checkNull(fullName)) {
@@ -37,16 +35,17 @@ var validateFullName = function (elm) {
         removeAlert(alert, elm);
         return true;
     }
-}
+};
 
 var validateEmail = function (elm) {
+
     var alert = elm.parentElement.parentElement.querySelector("label");
     var email = elm.value;
     if (checkNull(email)) {
         createAlert(alert, elm,"Vui lòng nhập Email");
         return false;
     }else if(!checkCharacter(email, "email")){
-        createAlert(alert, elm, "Email không đúng định dạng, email hợp lệ: example@gmail.com");
+        createAlert(alert, elm, "Email không hợp lệ, email hợp lệ: example@gmail.com");
         return false;
     }else if(!checkLength(email, 15)){
         createAlert(alert, elm, "Vui lòng nhập ít nhất 15 kí tự");
@@ -55,9 +54,10 @@ var validateEmail = function (elm) {
         removeAlert(alert, elm);
         return true;
     }
-}
+};
 
 var validatePhone = function (elm) {
+
     var alert = elm.parentElement.parentElement.querySelector("label");
     var phone = elm.value;
     console.log(phone);
@@ -65,25 +65,26 @@ var validatePhone = function (elm) {
         createAlert(alert,elm,"Vui lòng nhập Số điện thoại");
         return false;
     }else if(!checkCharacter(phone, "phone")){
-        createAlert(alert,elm, "Số điện thại không đúng định dạng, hợp lệ: 0988 123 456 hoặc 0123 456 12 12")
+        createAlert(alert,elm, "Số điện thoại không hợp lệ, chỉ bao gồm 0-9.");
         return false;
     }else if(!checkLength(phone, 12)){
-        createAlert(alert,elm,"Vui lòng nhập ít nhất 12 kí tự");
+        createAlert(alert,elm,"Số điện thoại tối thiểu 10 số, tối đa 11 số.");
         return false;
     }else {
         removeAlert(alert, elm);
         return true;
     }
-}
+};
 
 var validateBirthday = function (elm) {
+
     if(!elm.parentElement.className.includes('focused')){
         elm.parentElement.className += ' focused';
     }
     var alert = elm.parentElement.parentElement.querySelector("label");
     var birthday = elm.value;
     if (checkNull(birthday)) {
-        createAlert(alert,elm,"Vui lòng nhập Birthday");
+        createAlert(alert,elm,"Vui lòng nhập Ngày sinh.");
         return false;
     }else if(((new Date()).getFullYear() - (new Date(birthday)).getFullYear()) < 11){
         createAlert(alert,elm,"Độ tuổi cho phép đăng kí là trên 11 tuổi");
@@ -95,25 +96,27 @@ var validateBirthday = function (elm) {
 };
 
 var validateGender = function (elm) {
+
     if(!elm.parentElement.parentElement.className.includes('focused')){
         elm.parentElement.parentElement.className += ' focused';
     }
     var alert = elm.parentElement.parentElement.parentElement.querySelector("label");
     var gender = elm.value;
     if (checkNull(gender)) {
-        createAlert(alert,elm.parentElement,"Vui lòng chọn giới tính.");
+        createAlert(alert,elm.parentElement,"Vui lòng chọn Giới tính.");
         return false;
     }else {
         removeAlert(alert,elm.parentElement);
         return true;
     }
-}
+};
 
 var validateAddress = function (elm) {
+
     var alert = elm.parentElement.parentElement.querySelector("label");
     var address = elm.value;
     if (checkNull(address)) {
-        createAlert(alert, elm, "Vui lòng nhập địa chỉ.");
+        createAlert(alert, elm, "Vui lòng nhập Địa chỉ.");
         return false;
     }else if(!checkLength(address, 10)){
         createAlert(alert, elm, "Vui lòng nhập ít nhất 10 kí tự");
@@ -121,43 +124,36 @@ var validateAddress = function (elm) {
         removeAlert(alert,elm);
         return true;
     }
-}
+};
 
-function doSubmit(ev) {
+function doSubmit(ev, elm) {
     ev.preventDefault();
-    ev.target.disable = true;
     var form = document.forms["student-form"];
-    var rollNumber = form['rollNumber'];
-    var address = form['address'];
-    var phone = form['phone'];
-    var fullName = form['fullName'];
-    var email = form['email'];
-    var birthday = form ['birthday'];
-    var gender = form ['gender'];
-    var avatar = form['avatar'];
-    if(avatar.value == null || avatar.value === ""){
-        avatar.value = "1.png";
+    var r = validateRollNumber(form['rollNumber']);
+    var f = validateFullName(form['fullName']);
+    var e = validateEmail(form['email']);
+    var a = validateAddress(form['address']);
+    var b = validateBirthday(form ['birthday']);
+    var p = validatePhone(form['phone']);
+    var g = validateGender(form ['gender']);
+
+    if(form['avatar'].value == null || form['avatar'].value === ""){
+        form['avatar'].value = "1.png";
     }
-    var r = validateRollNumber(rollNumber);
-    var f = validateFullName(fullName);
-    var e = validateEmail(email);
-    var a = validateAddress(address);
-    var b = validateBirthday(birthday);
-    var p = validatePhone(phone);
-    var g = validateGender(gender);
     if ( r && f && e && a && b && p && g){
+        createButtonLoader(elm);
         var registerData = {
             "data": {
                 "type": "Student",
                 "attributes": {
-                    "birthday": new Date(birthday.value)*1,
-                    "address": address.value,
-                    "gender": parseInt(gender.value),
-                    "phone": phone.value,
-                    "rollNumber": rollNumber.value,
-                    "name": fullName.value,
-                    "email": email.value,
-                    "avatar": avatar.value
+                    "birthday": new Date(form ['birthday'].value)*1,
+                    "address": form['address'].value,
+                    "gender": parseInt(form ['gender'].value),
+                    "phone": form['phone'].value,
+                    "rollNumber": form['rollNumber'].value,
+                    "name": form['fullName'].value,
+                    "email": form['email'].value,
+                    "avatar": form['avatar'].value
                 }
             }
         };
@@ -168,31 +164,32 @@ function doSubmit(ev) {
             console.log(JSON.parse(this.responseText));
             if(req.status === 200 ||req.status === 201){
                 showNotification("alert-success", "Thêm Sinh viên thành công", "bottom", "right", "animated bounceIn", "animated bounceOut");
-                doReset();
-                ev.target.disable = false;
+                setTimeout(function () {
+                    location.reload();
+                }, 500);
+
             }else {
-                var alertError = document.getElementById("alert-error");
-                alertError.className = "alert bg-red";
-                var errors = JSON.parse(this.responseText).errors;
-                for(var i = 0; i < errors.length; i++){
-                    if(req.status === 409){
-                        alertError.innerHTML = "Mã sinh viên đã tồn tại";
-                    }
-                }
+                creatAlertResponeErrorServer(this);
             }
         };
         req.onerror = function () {
-            console.log(JSON.parse(this.responseText));
+            console.log(req.status);
         };
-        req.send(JSON.stringify(registerData))
+        req.onloadend = function(){
+            elm.removeAttribute("disabled");
+            elm.innerHTML = "<i class=\"material-icons\">save</i> <span>Lưu</span>";
+        };
+        req.send(JSON.stringify(registerData));
     }
 }
 
 function doReset() {
     $("#gender select").val('default');
     $("#gender select").selectpicker('refresh');
+
     document.getElementById("demo-avatar").src = "";
     $("#frm-file-upload").show();
+
     var form = document.forms["student-form"];
     form['rollNumber'].value = "";
     form['address'].value = "";
@@ -202,6 +199,7 @@ function doReset() {
     form ['birthday'].value = "";
     form ['gender'].value = "";
     form['avatar'].value = "";
+
     var labels = document.querySelectorAll("div.form-group > label");
     for(var i = 0; i < labels.length; i++){
         labels[i].innerHTML = "";
@@ -240,7 +238,7 @@ function checkCharacter(value, type) {
             regex = XRegExp('^[\\pL\\s]+$');
             break;
         case "phone":
-            regex = XRegExp('^[0-9\\s]+$');
+            regex = XRegExp('^[0-9\\-\\s]+$');
             break;
         case "email":
             regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -256,6 +254,14 @@ function checkLength(value, length) {
     return true;
 }
 
+function createButtonLoader(e) {
+    e.setAttribute("disabled", "");
+    e.innerHTML = "<div class=\"preloader pl-size-xs\">" + "<div class=\"spinner-layer pl-grey\">"
+                 + "<div class=\"circle-clipper left\">" + "<div class=\"circle\"></div>" + "</div>"
+                 + "<div class=\"circle-clipper right\">" + "<div class=\"circle\"></div>"
+                 + "</div>" + "</div>" + " </div>";
+}
+
 function createAlert(alert, elm, str) {
     alert.innerHTML = str;
     alert.className = "error";
@@ -265,7 +271,25 @@ function createAlert(alert, elm, str) {
     if(!elm.parentElement.className.includes("error")){
         elm.parentElement.className += " error";
     }
-
+}
+function creatAlertResponeErrorServer(e) {
+    var alertError = document.getElementById("alert-error");
+    if(!alertError.className.includes("alert bg-red")){
+        alertError.className = "alert bg-red";
+    }
+    alertError.innerHTML = "";
+    var  elUl = document.createElement("ul");
+    var errors = JSON.parse(e.responseText).errors;
+    for(var i = 0; i < errors.length; i++){
+        var li = document.createElement("li");
+        li.innerHTML = errors[i].detail;
+        elUl.appendChild(li);
+        var strId = errors[i].title.replace("Invalid ", "").toLowerCase();
+        if(document.getElementById(strId).className.includes("success")){
+            document.getElementById(strId).className = document.getElementById(strId).className.replace("success", "error");
+        }
+    }
+    alertError.appendChild(elUl);
 }
 
 function removeAlert(alert, elm) {

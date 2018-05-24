@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <div class="card">
-    <div class="header bg-red">
+    <div class="header bg-blue">
         <h2>
             LIST STUDENTS
         </h2>
