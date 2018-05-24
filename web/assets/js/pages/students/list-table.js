@@ -1,4 +1,4 @@
-var ListTableController = function (setup) {
+const ListTableController = function (setup) {
     this.STUDENTS_API = 'https://students-api-fai.appspot.com/api/students';
     this.query = location.search;
     this.hasPage = (this.query !== "" && this.query.includes('page'));
@@ -43,10 +43,10 @@ ListTableController.prototype = {
         };
         request.send();
     },
-    bindTableInfo: function (meta) {
-        var infos = this.infoBlock;
 
-        console.log(infos);
+    bindTableInfo: function (meta) {
+        let infos = this.infoBlock;
+
         infos[0].innerText = (meta.page - 1) * meta.limit + 1;
         infos[1].innerText = meta.page * meta.limit;
         if ((meta.page * meta.limit) > meta.totalItem) {
@@ -54,6 +54,7 @@ ListTableController.prototype = {
         }
         infos[2].innerText = (meta.totalItem);
     },
+
     bindStudentToTable: function (student, elem) {
         const controller = this;
         var row = document.createElement('tr');
@@ -72,10 +73,7 @@ ListTableController.prototype = {
         var editBtn = document.createElement('a');
         editBtn.className = 'btn btn-link waves-effect';
         editBtn.innerHTML = '<i class="material-icons">mode_edit</i>';
-        editBtn.href = '#';
-        editBtn.onclick = function (ev) {
-            alert(student.attributes.name);
-        };
+        editBtn.href = '/students/edit/' + student.id;
         actionsCol.appendChild(editBtn);
 
 
@@ -94,6 +92,7 @@ ListTableController.prototype = {
 
         elem.appendChild(row);
     },
+
     genPagination: function (meta) {
         var pagi = this.pagination;
         /**
@@ -119,6 +118,7 @@ ListTableController.prototype = {
             pagi.insertBefore(this.genPageNode(i, (meta.page === i), meta.page), pagi.querySelector("li.paginate_button.next"));
         }
     },
+
     genPageNode: function (num, active, cur) {
         var li = document.createElement("li");
         li.className = "paginate_button";
@@ -137,6 +137,7 @@ ListTableController.prototype = {
 
         return li;
     },
+
     deleteStudent: function (id, callBack) {
         var api = this.STUDENTS_API;
         $.ajax({
@@ -150,44 +151,45 @@ ListTableController.prototype = {
             }
         });
     },
+
     confirmDelete: function (id, studentName) {
+        const controller = this;
         swal({
-                title: "Bạn có chắc chắn muốn xóa sinh viên " + studentName,
-                text: "Nếu đã xóa, bạn không thể tìm lại dữ liệu !!!",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "Xóa",
-                cancelButtonText: "Để sau",
-                buttons: true,
-                dangerMode: true,
-                closeOnConfirm: false,
-                showLoaderOnConfirm: true
-            },
-            function (willDelete) {
-                if (willDelete) {
-                    new ListTableController().deleteStudent(id, {
-                        success: function () {
-                            swal({
-                                title: "Đã Xóa",
-                                text: "Xóa sinh viên " + studentName + " thành công.",
-                                type: "success",
-                                showConfirmButton: false
-                            });
-                            setTimeout(function () {
-                                location.reload();
-                            }, 2000);
-                        }, error: function (res) {
-                            swal("Chưa Xóa", res.errors[0].detail, "error");
-                        }
-                    });
-                }
-            });
+            title: "Bạn có chắc chắn muốn xóa sinh viên " + studentName,
+            text: "Nếu đã xóa, bạn không thể tìm lại dữ liệu !!!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Xóa",
+            cancelButtonText: "Để sau",
+            buttons: true,
+            dangerMode: true,
+            closeOnConfirm: false,
+            showLoaderOnConfirm: true
+        }, function (willDelete) {
+            if (willDelete) {
+                controller.deleteStudent(id, {
+                    success: function () {
+                        swal({
+                            title: "Đã Xóa",
+                            text: "Xóa sinh viên " + studentName + " thành công.",
+                            type: "success",
+                            showConfirmButton: false
+                        });
+                        setTimeout(function () {
+                            location.reload();
+                        }, 2000);
+                    }, error: function (res) {
+                        swal("Chưa Xóa", res.errors[0].detail, "error");
+                    }
+                });
+            }
+        });
     }
 };
 
 
-var controller = new ListTableController({
+const controller = new ListTableController({
     tableBody: document.getElementById('list-student-tbody'),
     infoBlock: document.querySelectorAll("#student_table_info>span"),
     pagination: document.getElementById("my-pagination"),
