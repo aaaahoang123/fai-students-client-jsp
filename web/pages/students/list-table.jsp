@@ -34,6 +34,10 @@
                     <thead>
                     <tr role="row">
                         <th class="sorting_asc text-center" tabindex="0" aria-controls="DataTables_Table_1"
+                            aria-label="Số thứ tự">
+                            STT
+                        </th>
+                        <th class="sorting_asc text-center" tabindex="0" aria-controls="DataTables_Table_1"
                             aria-label="Roll number of Student">
                             Mã Sinh Viên
                         </th>
@@ -53,6 +57,7 @@
                     </thead>
                     <tfoot>
                     <tr>
+                        <th rowspan="1" colspan="1" class="text-center">STT</th>
                         <th rowspan="1" colspan="1" class="text-center">Mã Sinh Viên</th>
                         <th rowspan="1" colspan="1" class="text-center">Họ Tên</th>
                         <th rowspan="1" colspan="1" class="text-center">Điện Thoại</th>

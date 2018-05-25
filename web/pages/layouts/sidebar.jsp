@@ -38,12 +38,17 @@
                         <span>Quản lý sinh viên</span>
                     </a>
                     <ul class="ml-menu">
-                        <li <c:if test="${fn:contains(content, 'pages/students/form.jsp')}">class="active"</c:if>>
+                        <li <c:if test="${fn:contains(content, 'pages/students/form.jsp') && isEdit == null}">class="active"</c:if>>
                             <a href="/students/form">Thêm Mới</a>
                         </li>
                         <li <c:if test="${fn:contains(content, 'pages/students/list-table.jsp')}">class="active"</c:if>>
                             <a href="/students/list-table">Danh Sách</a>
                         </li>
+                        <c:if test="${isEdit != null}">
+                            <li class="active">
+                                <a href="javascript:void(0)">Chỉnh sửa</a>
+                            </li>
+                        </c:if>
                     </ul>
                 </li>
             </ul>

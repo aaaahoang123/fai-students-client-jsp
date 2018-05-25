@@ -26,7 +26,7 @@ ListTableController.prototype = {
                 var meta = JSON.parse(this.response).meta;
                 table.innerHTML = '';
                 for (var i = 0; i < data.length; i++) {
-                    controller.bindStudentToTable(data[i], table);
+                    controller.bindStudentToTable(data[i], table, i, (meta.page - 1) * meta.limit + 1);
                 }
                 controller.genPagination(meta);
                 controller.bindTableInfo(meta);
@@ -55,10 +55,14 @@ ListTableController.prototype = {
         infos[2].innerText = (meta.totalItem);
     },
 
-    bindStudentToTable: function (student, elem) {
+    bindStudentToTable: function (student, elem, i, start) {
         const controller = this;
+
         var row = document.createElement('tr');
         row.className = 'even';
+        var idCol = document.createElement('td');
+        idCol.innerHTML = start + i;
+
         var rollCol = document.createElement('td');
         rollCol.className = 'sorting_1';
         rollCol.innerHTML = student.attributes.rollNumber;
@@ -85,6 +89,7 @@ ListTableController.prototype = {
         };
         actionsCol.appendChild(deleteBtn);
 
+        row.appendChild(idCol);
         row.appendChild(rollCol);
         row.appendChild(nameCol);
         row.appendChild(phoneCol);

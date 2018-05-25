@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Admin
@@ -28,11 +29,22 @@
 <div class="container-fluid animated fadeIn" style="display: none" id="form-content">
     <div class="card">
         <div class="header bg-blue">
-            <i class="material-icons md-36" style="float: left; margin-left: 1%; margin-right: 1%">person_add</i>
-            <h2>
-                Thêm mới sinh viên
-                <small>Hãy điền đầy đủ thông tin!</small>
-            </h2>
+            <c:choose>
+                <c:when test="${isEdit == null}">
+                    <i class="material-icons md-36" style="float: left; margin-left: 1%; margin-right: 1%">person_add</i>
+                    <h2>
+                        Thêm mới sinh viên
+                        <small>Hãy điền đầy đủ thông tin!</small>
+                    </h2>
+                </c:when>
+                <c:when test="${isEdit != null}">
+                    <i class="material-icons md-36" style="float: left; margin-left: 1%; margin-right: 1%">edit</i>
+                    <h2>
+                        Chỉnh sửa sinh viên
+                        <small>Hãy điền đầy đủ thông tin!</small>
+                    </h2>
+                </c:when>
+            </c:choose>
         </div>
         <div class="body">
             <div class="row">
@@ -117,21 +129,6 @@
 
                         <div class="row">
                             <div class="col-sm-4">
-                                <div class="form-group input-group">
-                                    <span class="input-group-addon">
-                                        <i class="material-icons">wc</i>
-                                    </span>
-                                    <div id="gender" class="form-line">
-                                        <select style="display: none" class="form-control show-tick" name="gender" onchange="validateGender(this)">
-                                            <option value="">-- Giới tính --</option>
-                                            <option value="0">Nữ</option>
-                                            <option value="1">Nam</option>
-                                        </select>
-                                    </div>
-                                    <label></label>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
                                 <div class="form-group input-group form-float">
                                     <span class="input-group-addon">
                                         <i class="material-icons">local_phone</i>
@@ -152,6 +149,22 @@
                                     <div id="bỉrthday" class="form-line">
                                         <input type="text" name="birthday" class="form-control datepicker"
                                                placeholder="Sinh nhật" onchange="validateBirthday(this)">
+                                    </div>
+                                    <label></label>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon">
+                                        <i class="material-icons">wc</i>
+                                    </span>
+                                    <div id="gender" class="form-line">
+                                        <select style="display: none" class="form-control show-tick" name="gender" onchange="validateGender(this)">
+                                            <option value="">-- Giới tính --</option>
+                                            <option value="0">Nữ</option>
+                                            <option value="1">Nam</option>
+                                        </select>
                                     </div>
                                     <label></label>
                                 </div>

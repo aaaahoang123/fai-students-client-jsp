@@ -36,7 +36,8 @@ const StudentEditor = {
         });
     },
 
-    editStudent: function (id) {
+    editStudent: function (id, el) {
+        createButtonLoader(el);
         if (id === null || id === undefined) id = this.studentId;
         let control = this;
 
@@ -80,15 +81,19 @@ const StudentEditor = {
                 method: "PUT",
                 data: JSON.stringify(registerData),
                 success: function (res) {
-                        showNotification("alert-success", "Sửa sinh viên thành công", "bottom", "right", "animated bounceIn", "animated bounceOut");
-                        doReset();
-                        setTimeout(function () {
-                            location.reload();
-                        }, 2000)
+                    showNotification("alert-success", "Sửa sinh viên thành công", "bottom", "right", "animated bounceIn", "animated bounceOut");
+                    doReset();
+                    setTimeout(function () {
+                        location.reload();
+                    }, 500);
                 },
                 error: function (res) {
                     console.log(res);
-                    console.log(registerData);
+                    creatAlertResponeErrorServer(res);
+                },
+                complete: function () {
+                    el.removeAttribute("disabled");
+                    el.innerHTML = "<i class=\"material-icons\">save</i> <span>Lưu</span>";
                 }
             });
         }
@@ -104,5 +109,5 @@ try {
 StudentEditor.loadStudent();
 
 document.getElementById("submit-btn").onclick = function () {
-    StudentEditor.editStudent(StudentEditor.studentId);
+    StudentEditor.editStudent(StudentEditor.studentId, this);
 };

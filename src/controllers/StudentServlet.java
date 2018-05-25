@@ -27,6 +27,7 @@ public class StudentServlet extends Viewer {
             extraJS.add("js/pages/students/validator.js");
             extraJS.add("js/pages/students/form.js");
             extraJS.add("js/pages/students/edit.js");
+            req.setAttribute("isEdit", true);
             responseView(req, resp, "Edit Student Form", "/pages/students/form.jsp", extraJS, extraCss);
             return;
         }
