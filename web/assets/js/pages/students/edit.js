@@ -37,7 +37,6 @@ const StudentEditor = {
     },
 
     editStudent: function (id, el) {
-        createButtonLoader(el);
         if (id === null || id === undefined) id = this.studentId;
         let control = this;
 
@@ -61,6 +60,7 @@ const StudentEditor = {
         let p = validatePhone(phone);
         let g = validateGender(gender);
         if ( r && f && e && a && b && p && g){
+            createButtonLoader(el);
             let registerData = {
                 "data": {
                     "type": "Student",

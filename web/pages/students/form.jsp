@@ -172,12 +172,18 @@
                         </div>
 
                         <input type="text" name="avatar" style="display: none">
-                        <button class="btn btn-success waves-effect m-r-5" type="button" id="submit-btn" onclick="doSubmit(event,this)">
-                            <i class="material-icons">save</i><span>Lưu</span>
-                        </button>
-                        <button class="btn bg-orange waves-effect" type="button" onclick="doReset()">
-                            <i class="material-icons">refresh</i> <span>Reset</span>
-                        </button>
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <button class="btn btn-block btn-success waves-effect m-r-5" type="button" id="submit-btn" onclick="doSubmit(event,this)">
+                                    <i class="material-icons">save</i><span>Lưu</span>
+                                </button>
+                            </div>
+                            <div class="col-sm-2">
+                                <button class="btn btn-block bg-orange waves-effect" type="button" onclick="doReset()">
+                                    <i class="material-icons">refresh</i> <span>Reset</span>
+                                </button>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
