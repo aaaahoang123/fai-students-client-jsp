@@ -19,7 +19,7 @@ var validateRollNumber = function (elm) {
         removeAlert(alert, elm);
         return true;
     }
-}
+};
 
 var validateFullName = function (elm) {
     var alert = elm.parentElement.parentElement.querySelector("label");
@@ -37,7 +37,7 @@ var validateFullName = function (elm) {
         removeAlert(alert, elm);
         return true;
     }
-}
+};
 
 var validateEmail = function (elm) {
     var alert = elm.parentElement.parentElement.querySelector("label");
@@ -55,7 +55,7 @@ var validateEmail = function (elm) {
         removeAlert(alert, elm);
         return true;
     }
-}
+};
 
 var validatePhone = function (elm) {
     var alert = elm.parentElement.parentElement.querySelector("label");
@@ -74,7 +74,7 @@ var validatePhone = function (elm) {
         removeAlert(alert, elm);
         return true;
     }
-}
+};
 
 var validateBirthday = function (elm) {
     if(!elm.parentElement.className.includes('focused')){
@@ -107,7 +107,7 @@ var validateGender = function (elm) {
         removeAlert(alert,elm.parentElement);
         return true;
     }
-}
+};
 
 var validateAddress = function (elm) {
     var alert = elm.parentElement.parentElement.querySelector("label");
@@ -121,7 +121,7 @@ var validateAddress = function (elm) {
         removeAlert(alert,elm);
         return true;
     }
-}
+};
 
 function doSubmit(ev) {
     ev.preventDefault();

@@ -166,4 +166,3 @@
         </div>
     </div>
 </div>
-<button class="btn btn-circle" style="position: absolute; right: 0; bottom: 0">Tung ngao</button>

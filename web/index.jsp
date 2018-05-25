@@ -51,9 +51,19 @@
   <div class="five-zero-zero animated fadeIn" id="error-500-section" style="display: none">
     <div class="five-zero-zero-container">
       <div class="error-code">500</div>
-      <div class="error-message">Server error</div>
+      <div class="error-message">Lỗi Server</div>
       <div class="button-place">
-        <a href="/" class="btn btn-default btn-lg waves-effect">GO TO HOMEPAGE</a>
+        <a href="/" class="btn btn-default btn-lg waves-effect">Về trang chủ</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="four-zero-four animated fadeIn" id="error-404-section">
+    <div class="four-zero-four-container">
+      <div class="error-code">404</div>
+      <div class="error-message">Học sinh không tồn tại hoặc đã bị xóa</div>
+      <div class="button-place">
+        <a href="/" class="btn btn-default btn-lg waves-effect">Về trang chủ</a>
       </div>
     </div>
   </div>
