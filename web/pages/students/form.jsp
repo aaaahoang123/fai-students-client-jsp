@@ -158,7 +158,7 @@
                         </div>
 
                         <input type="text" name="avatar" style="display: none">
-                        <button class="btn btn-primary waves-effect" type="button" onclick="doSubmit(event)">Lưu</button>
+                        <button class="btn btn-primary waves-effect" id="submit-btn" type="button" onclick="doSubmit(event)">Lưu</button>
                         <button class="btn bg-red waves-effect" type="button" onclick="doReset()">Reset</button>
                     </form>
                 </div>

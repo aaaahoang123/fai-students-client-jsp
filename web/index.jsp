@@ -58,7 +58,7 @@
     </div>
   </div>
 
-  <div class="four-zero-four animated fadeIn" id="error-404-section">
+  <div class="four-zero-four animated fadeIn" id="error-404-section" style="display: none">
     <div class="four-zero-four-container">
       <div class="error-code">404</div>
       <div class="error-message">Học sinh không tồn tại hoặc đã bị xóa</div>
