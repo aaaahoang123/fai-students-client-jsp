@@ -19,6 +19,7 @@ public class StudentServlet extends Viewer {
             extraCss.add("plugins/dropzone/dropzone.css");
             extraJS.add("plugins/momentjs/moment.js");
             extraJS.add("plugins/jquery-inputmask/jquery.inputmask.bundle.js");
+            extraJS.add("plugins/jquery-inputmask/jquery.mask.min.js");
             extraJS.add("plugins/dropzone/dropzone.js");
             extraJS.add("plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js");
             extraJS.add("plugins/bootstrap-notify/bootstrap-notify.js");
@@ -37,6 +38,7 @@ public class StudentServlet extends Viewer {
                 extraCss.add("plugins/bootstrap-select/css/bootstrap-select.css");
                 extraJS.add("plugins/momentjs/moment.js");
                 extraJS.add("plugins/jquery-inputmask/jquery.inputmask.bundle.js");
+                extraJS.add("plugins/jquery-inputmask/jquery.mask.min.js");
                 extraJS.add("plugins/dropzone/dropzone.js");
                 extraJS.add("plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js");
                 extraJS.add("plugins/bootstrap-notify/bootstrap-notify.js");

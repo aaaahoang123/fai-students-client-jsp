@@ -105,6 +105,7 @@ ListTableController.prototype = {
          * Nếu số trang hiện tại bằng tổng số trang thì ko cho next
          */
         if (meta.page === meta.totalPage) pagi.querySelector("li.paginate_button.next").className += " disabled";
+
         else {
             if (this.hasPage) pagi.querySelector("li.paginate_button.next > a").href = "/students/list-table" + location.search.replace('page=' + meta.page, 'page=' + (meta.page + 1));
             if (!this.hasPage && !this.hasLimit) pagi.querySelector("li.paginate_button.next > a").href = "/students/list-table?page=" + (meta.page + 1);

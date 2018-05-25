@@ -12,7 +12,7 @@ const StudentEditor = {
         form['phone'].value = st.phone;
         form['fullName'].value = st.name;
         form['email'].value = st.email;
-        form ['birthday'].value = new Date(st.birthday);
+        form ['birthday'].value = new Date(st.birthday).toLocaleDateString('en-US');
         form ['gender'].value = st.gender;
         form['avatar'].value = st.avatar;
         $("#gender select").selectpicker('refresh');

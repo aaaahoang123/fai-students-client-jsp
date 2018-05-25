@@ -39,7 +39,7 @@
   <link rel="stylesheet" href="${assets}css/style.css">
   <link rel="stylesheet" href="${assets}css/themes/all-themes.css">
 </head>
-<body class="theme-red">
+<body class="theme-blue">
 <c:import url="pages/layouts/loader.jsp" />
 <!-- overlay -->
 <div class="overlay"></div>
